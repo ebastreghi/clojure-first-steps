@@ -33,6 +33,9 @@
   (def g "Hello")
   ;keyword
   (def h 'thanks)
+  ;case sensitive
+  (def status true)
+  (def STATUS false)
 
 
   (println a)
@@ -42,3 +45,20 @@
   )
 ;call the function
 (DataTypes)
+
+;SET
+#{1 1.5 42 "hello"}
+
+;MAP
+#{:name "Edevar", :age 34}
+
+;ARRAY
+[1 2 3 4]
+
+;LIST(make up the code)
+(1 2 3 4 "One")
+;the list bellow is interpreted as a function definition
+(defn func [] (println "hi"))
+;this list is interpertred as a call of function
+(func)
+
