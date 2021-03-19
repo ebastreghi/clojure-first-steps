@@ -19,19 +19,4 @@
   (def myNewOtherPet (assoc myOtherPet :PetAge 10))
   (println myNewOtherPet)
   )
-(pets
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  )
+(pets)

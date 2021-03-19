@@ -59,6 +59,6 @@
 (1 2 3 4 "One")
 ;the list bellow is interpreted as a function definition
 (defn func [] (println "hi"))
-;this list is interpertred as a call of function
+;this list is interpreted as a call of function
 (func)
 

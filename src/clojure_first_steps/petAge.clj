@@ -4,6 +4,7 @@
   "This function returns the age of the pet is human years"
   [mapKey]
   (def petMap {'dog 7, 'cat 5, 'goldfish 10})
+  ;(def petMap {:dog 7, :cat 5, :goldfish 10})
   (get petMap mapKey)
   )
 
