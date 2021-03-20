@@ -1,4 +1,4 @@
-(ns clojure-first-steps.wather)
+(ns clojure-first-steps.watcher)
 
 (defn watch
   []
