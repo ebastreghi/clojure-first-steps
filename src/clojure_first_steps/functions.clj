@@ -46,19 +46,74 @@
 ;call the function
 (DataTypes)
 
+;clojure.lang.Keyword
+(type :a)
+
+;clojure.lang.Symbol
+(type 'a)
+
 ;SET
 #{1 1.5 42 "hello"}
+(hash-set 1 1.5 42 "hello")
 
 ;MAP
-#{:name "Edevar", :age 34}
+{:name "Edevar", :age 34}
+(hash-map :name "Edevar" :age 34)
 
 ;ARRAY
 [1 2 3 4]
+(vector 1 2 3 4)
 
 ;LIST(make up the code)
 (1 2 3 4 "One")
+(list 1 2 3 4 "One")
+
 ;the list bellow is interpreted as a function definition
 (defn func [] (println "hi"))
 ;this list is interpreted as a call of function
 (func)
 
+;when I use let to declare a variable it's gonna be
+;valid only within the parentheses
+;ie if you try to access "x" out of the parentheses
+; it's not gonna be "Steve"
+(let [x "Steve"]
+  (println x)
+  )
+
+;we can use the predicate "empty?" in the if statement
+(if (empty? x)
+  "x id empty"
+  "x is not empty"
+  )
+
+(if-not (empty? x)
+  (do
+    (println "Ok")
+    :ok
+    )
+  )
+
+; set a function in a variable
+(def helloFnc (fn [] "Hello"))
+
+;require a doc that is gonna appear in console
+(require '[clojure.repl :refer [doc]])
+(doc helloFnc)
+
+;different implementation according with the parameters
+(defn helloOverhead
+  ([] "Hello")
+  ([name] ("Hello " name))
+  )
+
+(defn test
+  [config]
+  (str "Hello, " (:name config))
+  )
+
+;extract the map value in parameter
+(defn testExtrat
+  [{name :name}]
+  (str "Hello, " name)
+  )

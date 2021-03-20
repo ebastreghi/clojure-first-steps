@@ -5,6 +5,7 @@
 
   ;(red green blue)
   (def colors (seq ["red" "green" "blue"]))
+  (def colorList ("red" "green" "blue"))
   (println colors)
 
   ;(yellow red green blue)
@@ -38,6 +39,32 @@
 
   (println (last colors))
 
+  ;choose the position
+  (println (nth colors 1))
+
   (println (sort (seq [1 5 8 9 2 3])))
+
+  ;return a clojure.lang.LazySeq
+  (concat colors colorList)
+
+  (assoc {:a 1} :b 2)
+  ;{:settings {:a "a", :b 2}}
+  (assoc-in {:settings {:a 1 :b 2}} [:settings :a] "a")
+  ;{:settings {:a 2, :b 2}}
+  (update-in {:settings {:a 1 :b 2}} [:settings :a] inc)
+
+  (def m {:a 1 :b 2})
+  ;1
+  (get m :a)
+  ;1
+  (:a m)
+
+  (def s #{1 2 3})
+  ;#{1 2 3 4}
+  (conj s 4)
+  ;#{1 2}
+  (disj s 3)
+  (contains? s 3)
+
   )
 (seqFnc)
