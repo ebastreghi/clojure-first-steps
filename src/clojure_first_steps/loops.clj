@@ -4,11 +4,11 @@
   []
   (println "loop")
   (loop [x 0]
-        (when (< x 10)
-          (println x)
-          (recur (inc x))
-          )
-        )
+    (when (< x 10)
+      (println x)
+      (recur (inc x))
+      )
+    )
   )
 (loopFnc)
 

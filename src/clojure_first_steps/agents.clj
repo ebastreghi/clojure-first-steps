@@ -1,7 +1,7 @@
 (ns clojure-first-steps.agents)
 
 (defn agents
-  "sample of agent functinarity"
+  "sample of agent functionality"
   []
   ;agent is async and atom is sync
   (def amount (agent 100))
