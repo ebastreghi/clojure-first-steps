@@ -8,7 +8,9 @@
    (println "loving Clojure so far")
    (+ 2 5))
 
-#(println "Hello anonymous function")
+;Hello anonymous function nil
+(println "Hello anonymous function")
+;#object[clojure_first_steps.core$eval1588$fn__1589 0x3f2f6bc "clojure_first_steps.core$eval1588$fn__1589@3f2f6bc"]
 #(println "Hello " %1 %2)
 
 (def increment (fn [x] (+ x 1)) )
