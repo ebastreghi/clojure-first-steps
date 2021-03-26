@@ -11,6 +11,7 @@
 (println (Date.))
 
 ;#inst "2021-03-22T12:01:01.221-00:00"
+
 ;(System/currentTimeMillis) means the constructor
 (println (Date. (System/currentTimeMillis)))
 
@@ -29,6 +30,45 @@
            (.set Calendar/MONTH 11)
            (.set Calendar/DAY_OF_MONTH 22)
            ))
+
+;; Note that even though println returns nil, doto still returns the HashMap object
+(doto (java.util.HashMap.)
+  (.put "a" 1)
+  (.put "b" 2)
+  (println))
+;;=> #<HashMap {b=2, a=1}>
+;;=> {"b" 2, "a" 1}
+
+
+;; careful when calling 'dotimes' from within a 'doto' statement
+user=> (doto (java.util.ArrayList.)
+         (.add -2)
+         (.add -1)
+         (dotimes [i 3] (.add i)))
+;java.lang.IllegalArgumentException: dotimes requires a vector for its binding (NO_SOURCE_FILE:1)
+
+; what has happened is that (java.util.ArrayList.) has secretly
+; become the first argument to 'dotimes' and thus the exception
+; informs us that it can't find the binding vector required for
+; 'dotimes' to expand. You can cure this behaviour by simply using
+; 'do' instead of 'doto' or by wrapping the call to 'dotimes' in
+; a function. e.g:
+do
+;using 'let' with implicit 'do' instead of 'doto'
+user=> (let [al (java.util.ArrayList.)]
+         (.add al -2)
+         (.add al -1)
+         (dotimes [i 3] (.add al i))
+         al);return the ArrayList
+;#   ;exactly what we intended
+
+    ;wrapping 'dotimes' in a function literal
+    user=>(doto (java.util.ArrayList.)
+            (.add -2)
+            (.add -1)
+            (#(dotimes [i 3] (.add % i))))
+;#   ;exactly what we intended again
+
 
 ;create an array of objects with length 100
 (object-array 100)
