@@ -109,6 +109,7 @@
   ([name] ("Hello " name))
   )
 
+;str return a concatenation of strings
 (defn test
   [config]
   (str "Hello, " (:name config))
